@@ -72,10 +72,21 @@ const applyClientFilters = () => {
 
 const calculateStats = () => {
   const payments = filteredData.value.map((el) => Number(el.for_pay))
-  periodProfit.value = payments.reduce((a, b) => a + b, 0).toFixed(1)
-  averageSale.value = (Number(periodProfit.value) / payments.length).toFixed(1)
   const returns = filteredData.value.map((el) => el.is_storno)
-  returnPercent.value = ((returns.filter((el) => el).length / returns.length) * 100).toFixed(1)
+
+  if (payments.length > 0) {
+    periodProfit.value = payments.reduce((a, b) => a + b, 0).toFixed(1)
+    averageSale.value = (Number(periodProfit.value) / payments.length).toFixed(1)
+  } else {
+    periodProfit.value = '0.0'
+    averageSale.value = '0.0'
+  }
+
+  if (returns.length > 0) {
+    returnPercent.value = ((returns.filter((el) => el).length / returns.length) * 100).toFixed(1)
+  } else {
+    returnPercent.value = '0.0'
+  }
 }
 
 const prepareProfitData = () => {
