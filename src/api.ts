@@ -1,11 +1,10 @@
 import type { Income, Order, Sale, ServerResponse, Stock } from '@/types.ts'
 import { format, limit } from '@/utils/utils.ts'
 
-const baseURL = import.meta.env.VITE_API_BASE_URL || ''
 const key = 'E6kUTYrYwZq2tN4QEtyzsbEBk3ie'
 
 function buildUrl(path: string, queryParams: Record<string, string> = {}) {
-  const url = new URL(`${baseURL}/api/${path}`)
+  const url = new URL(`/api/${path}`, window.location.origin)
 
   url.searchParams.set('key', key)
   url.searchParams.set('limit', String(limit))
