@@ -1,7 +1,7 @@
 import type { Income, Order, Sale, ServerResponse, Stock } from '@/types.ts'
 import { format, limit } from '@/utils/utils.ts'
 
-const baseURL = 'http://109.73.206.144:6969'
+const baseURL = 'https://109.73.206.144:6969'
 const key = 'E6kUTYrYwZq2tN4QEtyzsbEBk3ie'
 
 function buildUrl(path: string, queryParams: Record<string, string> = {}) {
